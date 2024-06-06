@@ -10,11 +10,13 @@ services:
       - ./app:/app
       - /app/node_modules
     environment:
-      - NODE_ENV=production
-      - DATABASE_URL=${DATABASE_URL}
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}
     restart: unless-stopped
     depends_on:
       - db
+    networks:
+      - mynetwork
   db:
     container_name: postgres
     image: postgres:alpine
@@ -24,3 +26,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - 5432:5432
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge

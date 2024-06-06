@@ -1,10 +1,6 @@
 .PHONY: all
 
 all:
-	make cleanup
-	make build
-
-all:
 	cp env.example .env
 	make cleanup
 	make up
@@ -16,3 +12,6 @@ cleanup:
 up:
 	docker compose build
 	docker compose up -d
+
+up_prisma:
+	docker compose run --rm app yarn prisma migrate dev --name init
