@@ -13,5 +13,11 @@ up:
 	docker compose build
 	docker compose up -d
 
-up_prisma:
-	docker compose run --rm app yarn prisma migrate dev --name init
+migrate:
+	docker compose run --rm app yarn migrate
+
+insert:
+	docker compose run --rm app yarn data_create
+
+data_get:
+	docker compose run --rm app yarn data_get
