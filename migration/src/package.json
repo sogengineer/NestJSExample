@@ -1,0 +1,24 @@
+{
+  "name": "migration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "migration": "node -r esbuild-register core/migrate.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.14.2",
+    "esbuild": "^0.21.5",
+    "esbuild-register": "^3.5.0",
+    "fs": "^0.0.1-security",
+    "kysely": "^0.27.3",
+    "path": "^0.12.7",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.6"
+  }
+}

@@ -1,9 +1,13 @@
 .PHONY: all
 
+export COMPOSE_PROJECT_NAME=nestjs
+
 all:
 	cp env.example .env
 	make cleanup
 	make up
+	cd migration
+	docker compose run --rm app yarn migration
 
 cleanup:
 	docker compose down
@@ -13,11 +17,6 @@ up:
 	docker compose build
 	docker compose up -d
 
-migrate:
-	docker compose run --rm app yarn migrate
-
-insert:
-	docker compose run --rm app yarn data_create
-
-data_get:
-	docker compose run --rm app yarn data_get
+migration:
+	cd migration
+	docker compose run --rm app yarn migration

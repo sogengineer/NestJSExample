@@ -1,13 +1,13 @@
-import { Database } from '../type';
+import { Database } from '../schema/type';
 import { Pool } from 'pg';
 import { Kysely, PostgresDialect } from 'kysely';
 
 const dialect = new PostgresDialect({
   pool: new Pool({
-    database: process.env.POSTGRES_DB,
-    host: 'db',
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
+    database: 'local',
+    host: 'postgres',
+    user: 'root',
+    password: 'password',
     max: 10,
   }),
 });
