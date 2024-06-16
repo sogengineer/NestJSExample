@@ -6,8 +6,7 @@ all:
 	cp env.example .env
 	make cleanup
 	make up
-	cd migration
-	docker compose run --rm app yarn migration
+	make mig
 
 cleanup:
 	docker compose down
@@ -17,6 +16,6 @@ up:
 	docker compose build
 	docker compose up -d
 
-migration:
-	cd migration
-	docker compose run --rm app yarn migration
+mig:
+	cp env.example ./migration/.env
+	docker compose -f ./migration/docker-compose.yml run --rm migration yarn migration
