@@ -1,5 +1,14 @@
-async function main() {
-  console.log('生成中')
+import create from "./create";
+
+const commands = ['create', 'update', 'get'];
+
+const command = process.argv[2];
+if (!command || !commands.includes(command)) {
+  console.log(`usage: npm run start -- [create/update/get]`);
+  process.exit(0);
 }
 
-const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
+async function main() {
+  if (command == 'create') await create();
+}
+main();

@@ -19,3 +19,5 @@ up:
 mig:
 	cp env.example ./migration/.env
 	docker compose -f ./migration/docker-compose.yml run --rm migration yarn migration
+	docker compose -f ./migration/docker-compose.yml run --rm migration yarn start -- create
+
