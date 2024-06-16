@@ -6,5 +6,3 @@ COPY src/package*.json .
 
 RUN yarn cache clean && yarn install --network-timeout 600000 --frozen-lockfile
 COPY src/ .
-
-CMD ["yarn", "migration"]
